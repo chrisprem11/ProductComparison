@@ -1,0 +1,114 @@
+<script type="text/ng-template" id="imageTemplate.html">
+  <a>
+      <img ng-src="{{match.model.productIcon}}"/>
+      <span ng-bind-html="match.model.productDisplayName | uibTypeaheadHighlight:query"></span>
+      <br/>
+      <span ng-bind-html="match.model.productPrice | uibTypeaheadHighlight:query"></span>
+  </a>
+</script>
+<div>Product Comparison</div>
+<div class="row">
+    <br/><br/><hr/>
+     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+         <h3>Compare By :</h3>
+        <br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+         <br/><br/><br/>
+        <div ng-show="showFeatures">
+            <ul class="list-group" style="border-collapse:collapse; padding:0px;">
+              <li class="list-group-item"><h4>Display : </h4></li><br/>
+              <li class="list-group-item"><h4>Camera :</h4></li><br/>
+              <li class="list-group-item"><h4>Operating System :</h4></li><br/>
+              <li class="list-group-item"><h4>Sim Size :</h4></li><br/>
+              <li class="list-group-item"><h4>Internal Storage :</h4></li><br/>
+              <li class="list-group-item"><h4>External Storage :</h4></li><br/>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <input type="text" class="form-control" placeholder="Add a mobile"
+      ng-model="mobileOne" uib-typeahead="product as product.productDisplayName for product in mobileNamess | filter:$viewValue | limitTo:8"
+      typeahead-min-length="2"
+      typeahead-template-url="imageTemplate.html"
+      typeahead-on-select="onSelect($item, $model, $label)" ng-change="showOptions()" ng-show="showInputTextBox">
+        <div ng-show="showImage">
+            <div>
+                <br/>
+                <h3 class="text-primary">{{selected.productDisplayName}}</h3>
+                <button class=" btn btn-xs btn-danger pull-right" ng-click="hideData()">
+                    <span class="ion-android-cancel"></span>
+                </button>
+                <img class="img-responsive img-rounded text-center" src="{{selected.productImage}}" style="height:50%;width:60%"/><br/>
+                <h4 class="text-danger pull-left">Rs. {{selected.productPrice}}</h4>
+            </div>
+           <div>
+<!--
+                <button class="btn btn-xs btn-primary pull-left" ng-click="compareProduct(selected.productTypeId)">+Compare</button>
+-->
+            </div><hr/><br/><br/><br/>
+            <div>
+                <ul class="list-group" ng-repeat="i in mobileAttributes" style="border-collapse:collapse; padding:0px;">
+                    <li class="list-group-item"><p>{{i.attribute.value}}</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <input type="text" class="form-control" placeholder="Add a mobile"
+      ng-model="mobileTwo" uib-typeahead="product as product.productDisplayName for product in mobileNamess | filter:$viewValue | limitTo:8"
+      typeahead-min-length="2"
+      typeahead-template-url="imageTemplate.html"
+      typeahead-on-select="onSecondSelect($item, $model, $label)" ng-change="showOptions()" ng-show="showSecondInputTextBox ">
+        <div ng-show="showSecondDiv">
+            <div>
+                <br/>
+                <h3 class="text-primary">{{secondSelectedItem.productDisplayName}}</h3>
+                <button class=" btn btn-xs btn-danger pull-right" ng-click="hideSecondData()">
+                    <span class="ion-android-cancel"></span>
+                </button>
+                <img class="img-responsive img-rounded text-center" src="{{secondSelectedItem.productImage}}" style="height:42%;width:45%"/><br/>
+                <h4 class="text-danger pull-left">Rs. {{secondSelectedItem.productPrice}}</h4>
+            </div>
+           <div>
+<!--
+                <button class="btn btn-xs btn-primary pull-left" ng-click="compareProduct(selected.productTypeId)">+Compare</button>
+-->
+            </div><hr/><br/><br/><br/>
+            <div>
+                <ul class="list-group" ng-repeat="i in secondMobileAttributes" style="border-collapse:collapse; padding:0px;">
+                    <li class="list-group-item"><p>{{i.attribute.value}}</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <input type="text" class="form-control" placeholder="Add a mobile"
+      ng-model="mobileThree" uib-typeahead="product as product.productDisplayName for product in mobileNamess | filter:$viewValue | limitTo:8"
+      typeahead-min-length="2"
+      typeahead-template-url="imageTemplate.html"
+      typeahead-on-select="onThirdSelect($item, $model, $label)" ng-change="showOptions()" ng-show="showThirdInputTextBox ">
+        <div ng-show="showThirdDiv">
+            <div>
+                <br/>
+                <h3 class="text-primary">{{thirdSelectedItem.productDisplayName}}</h3>
+                <button class=" btn btn-xs btn-danger pull-right" ng-click="hideThirdData()">
+                    <span class="ion-android-cancel"></span>
+                </button>
+                <img class="img-responsive img-rounded text-center" src="{{thirdSelectedItem.productImage}}" style="height:42%;width:45%"/><br/>
+                <h4 class="text-danger pull-left">Rs. {{thirdSelectedItem.productPrice}}</h4>
+            </div>
+           <div>
+<!--
+                <button class="btn btn-xs btn-primary pull-left" ng-click="compareProduct(selected.productTypeId)">+Compare</button>
+-->
+            </div><hr/><br/><br/><br/>
+            <div>
+                <ul class="list-group" ng-repeat="i in thirdMobileAttributes" style="border-collapse:collapse; padding:0px;">
+                    <li class="list-group-item"><p>{{i.attribute.value}}</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--This is a new section-->
