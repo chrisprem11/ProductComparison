@@ -18,7 +18,7 @@
             var deferred = $q.defer();
             $timeout(function() {
                /* $http.get('http://localhost:8080/productTOI/searchProductType/' + productName)*/
-                 $http.get('app/pages/product/Json/data.json')
+                 $http.get('app/pages/product/Json/allProducts.json')
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -34,7 +34,9 @@
             var deferred = $q.defer();
             $timeout(function() {
 
-                $http.get('http://localhost:8080/productTOI/getProductDetails/' + id)
+                /*$http.get('http://localhost:8080/productTOI/getProductDetails/' + id)*/
+                $http.get('app/pages/product/Json/motoAttributes.json')
+
                     .then(function(response) {
                         deferred.resolve(response.data);
                     }, function(error) {
@@ -45,13 +47,13 @@
 
             return deferred.promise;
         }
-        
-       
+
+
 
         return {
             "getProductTypeDetails": productTypeDetails,
             "getProductTypeDetailsById": productTypeDetailById
-          
+
         }
     }
 })();

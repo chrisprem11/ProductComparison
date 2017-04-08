@@ -9,9 +9,10 @@
     $stateProvider
         .state('product', {
           url: '/compare/mobile',
-          templateUrl: 'app/pages/product/productComparison.html',
+          templateUrl: 'app/pages/product/View/mobileComparison.html',
           title: 'Product Comparison',
           controller : 'ProductController',
+          directive: 'productDirective',
           sidebarMeta: {
             icon: 'ion-compose',
             order: 800

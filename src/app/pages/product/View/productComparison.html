@@ -6,7 +6,19 @@
       <span ng-bind-html="match.model.productPrice | uibTypeaheadHighlight:query"></span>
   </a>
 </script>
+<script type="text/javascript">
+
+
+
+</script>
 <div>Product Comparison</div>
+<div ng-repeat="i in mobileNamess">
+  <div product-directive item="i" name="mobileOne" ng-model="new" on-select="onClick(name)">
+    <h2>Transclude Statement</h2>
+  </div>
+</div>
+<h2 class="text-danger">{{directiveName}}</h2>
+
 <div class="row">
     <br/><br/><hr/>
      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

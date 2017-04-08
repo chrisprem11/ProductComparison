@@ -1,0 +1,26 @@
+<div>
+<div class="row"></div>
+    <div class="row">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr >
+              <th>
+                <div><br/>
+                <h4>{{selected.productDisplayName}}</h4>
+                </div>
+              </th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr ng-repeat = " i in mobileAttributes">
+                <td>
+                  <div>
+                    <br />
+                    <h4> {{i.attribute.value}}</h4>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

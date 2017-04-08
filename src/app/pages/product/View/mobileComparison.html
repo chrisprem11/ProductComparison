@@ -1,0 +1,52 @@
+<div>
+  <h2>Mobile Compare :</h2><br/><hr />
+  <script type="text/ng-template" id="imageTemplate.html">
+    <a>
+        <img ng-src="{{match.model.productIcon}}"/>
+        <span ng-bind-html="match.model.productDisplayName | uibTypeaheadHighlight:query"></span>
+        <br/>
+        <span ng-bind-html="match.model.productPrice | uibTypeaheadHighlight:query"></span>
+    </a>
+  </script>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="row"><h2>Compare By :</h2><br /><br/><br /><br/><br /></div>
+        <div class="row">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr ng-repeat="i in features">
+                  <th>
+                    <div><br/>
+                    <h4>{{i}}</h4>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-3">
+          <input type="text" class="form-control" placeholder="Add a mobile"
+          ng-model="mobileOne" uib-typeahead="product as product.productDisplayName for product in mobileNamess | filter:$viewValue | limitTo:8"
+          typeahead-min-length="2"
+          typeahead-template-url="imageTemplate.html"
+          typeahead-on-select="onSelect($item, $model, $label)" ng-change="showOptions()" ng-show="showInputTextBox "><br />
+      <product-directive></product-directive>
+    </div>
+    <div class="col-lg-3">
+        <!-- <input type="text" class="form-control" placeholder="Add a mobile"
+        ng-model="mobileTwo" uib-typeahead="product as product.productDisplayName for product in mobileNamess | filter:$viewValue | limitTo:8"
+        typeahead-min-length="2"
+        typeahead-template-url="imageTemplate.html"
+        typeahead-on-select="onSelect($item, $model, $label)" ng-change="showOptions()" ng-show="showInputTextBox "><br />
+      <product-directive></product-directive> -->
+    </div>
+    <div class="col-lg-3">
+        <!-- <input type="text" class="form-control" placeholder="Add a mobile"
+        ng-model="mobileTwo" uib-typeahead="product as product.productDisplayName for product in mobileNamess | filter:$viewValue | limitTo:8"
+        typeahead-min-length="2"
+        typeahead-template-url="imageTemplate.html"
+        typeahead-on-select="onSelect($item, $model, $label)" ng-change="showOptions()" ng-show="showInputTextBox "><br />
+      <product-directive></product-directive> -->
+    </div>
+  </div>

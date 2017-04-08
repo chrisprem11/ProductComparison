@@ -20,25 +20,35 @@
     $scope.showThirdInputTextBox = true;
     $scope.mobileNames = [];
     $scope.smartTablePageSize = 5;
-      
+
+    $scope.matchedAttributes =[];
+
+/*New directive trials*/
+
+
+/**/
+      $scope.features = { "Display":"Display", "Camera":"Camera", "OS":"OS","Sim":"Sim","InternalStorage":"Internal Storage",
+      "EternalStorage":"External Storage" };
+
       $scope.showOptions = function(){
                 ProductService.getProductTypeDetails().then(function(arg){
                 $scope.mobileNamess = arg;
             });
       }
-      
+
       $scope.onSelect = function ($item, $model, $label) {
-            $scope.showInputTextBox = false;
+            /*$scope.showInputTextBox = false;*/
             $scope.showImage= true;
             $scope.showFeatures=true;
             $scope.selected = $item;
+            console.log($scope.selected);
             var id = $scope.selected.productTypeId;
-            ProductService.getProductTypeDetailsById(id).then(function(arg){
+            ProductService.getProductTypeDetailsById().then(function(arg){
               $scope.mobileAttributes =arg;
               console.log($scope.mobileAttributes);
             });
        };
-      
+
       $scope.onSecondSelect = function ($item, $model, $label) {
             $scope.showSecondInputTextBox = false;
             $scope.showSecondDiv= true;
@@ -49,7 +59,7 @@
               console.log($scope.secondMobileAttributes);
             });
        };
-      
+
        $scope.onThirdSelect = function ($item, $model, $label) {
             $scope.showThirdInputTextBox = false;
             $scope.showThirdDiv= true;
@@ -60,7 +70,7 @@
               console.log($scope.thirdMobileAttributes);
             });
        };
-      
+
       $scope.hideData= function(){
           $scope.showInputTextBox = true;
           $scope.showImage= false;
@@ -68,7 +78,7 @@
           $scope.mobileAttributes="";
           $scope.mobileOne="";
       }
-      
+
       $scope.hideSecondData = function(){
             $scope.showSecondDiv=false;
             $scope.secondSelectedItem="";
@@ -77,7 +87,7 @@
             $scope.mobileTwo="";
 
       }
-      
+
       $scope.hideThirdData = function(){
             $scope.showThirdDiv=false;
             $scope.thirdSelectedItem="";
@@ -86,7 +96,7 @@
             $scope.mobileThree="";
 
       }
-      
+
        /* $scope.display = function(){
             $scope.showFeatures=true;
              if(!($scope.mobileOne).isUndefined){
@@ -98,10 +108,10 @@
                     $scope.mobileAttributes =arg;
                     console.log($scope.mobileAttributes);
                 });
-            }); 
+            });
          }
         }
-        
+
         $scope.displayTwo = function(){
             $scope.showFeatures=true;
              if(!($scope.mobileTwo).isUndefined){
@@ -113,10 +123,10 @@
                     $scope.secondMobileAttributes =arg;
                     console.log($scope.secondMobileAttributes);
                 });
-            }); 
+            });
          }
         }
-        
+
          $scope.displayThree = function(){
             $scope.showFeatures=true;
              if(!($scope.mobileThree).isUndefined){
@@ -128,10 +138,10 @@
                     $scope.thirdMobileAttributes =arg;
                     console.log($scope.secondMobileAttributes);
                 });
-            }); 
+            });
          }
         }
-      
+
          //THIS function CAN BE USED TO SEARCH A PRODUCT BY ITS NAME
       /*  $scope.searchPhone = function(obj){
           var product = obj;
@@ -143,7 +153,7 @@
               }
             });
       }
-      
+
       $scope.compareProduct = function(id){
           $scope.showFeatures = true;
           ProductService.getProductTypeDetailsById(id).then(function(arg){
